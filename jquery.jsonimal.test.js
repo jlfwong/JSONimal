@@ -252,6 +252,20 @@ test('jsonimal', function() {
 	});
 });
 
+test('combined jQuery and json', function() {
+	assertDiffCount({
+		'#container' : 1,
+		'p'          : 3
+	},function(t) {
+		$ps = $("<p></p><p></p><p></p>");
+		t.jsonimal(
+			["#container", [
+				$ps
+			]]
+		);
+	});
+});
+
 $(function() {
 	$.mktag("#demo").jsonimal([
 		["h1", {text: "JSONimal!"}],
@@ -284,5 +298,4 @@ $(function() {
 			]]
 		]]
 	]).appendTo("body");
-	console.log($("#demo").html());
 });

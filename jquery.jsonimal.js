@@ -1,5 +1,27 @@
+/*
+    JSONimal - elegant DOM construction with jQuery
+
+    Copyright (C) 2010  Jamie Wong
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+*/
+
 jQuery.mktag = (function($) {
 	return function(tagName, properties) {
+		if (typeof tagName !== 'string') {
+			console.log('Error', tagName);
+		}
 		var tagType = tagName.match(/^[^\.#]*/)[0];
 		if (tagType === null || tagType.length == 0) {
 			tagType = 'div';
@@ -42,25 +64,29 @@ jQuery.build = (function($) {
 			// $.build(jQuery Object)
 			// Example:
 			// $.build($("<b>"));
-			return buildData; 
+			return buildData;
 
-		} else if (typeof buildData == "string") {
+		} else if (typeof buildData === "string") {
 			// $.build(String)
 			// Example:
 			// $.build("#id1.class1.class2")
 			return $.mktag(buildData);
 
-		} else if ($.isArray(buildData[0])) {
+		} else if ($.isArray(buildData[0]) || buildData[0] instanceof jQuery) {
 			// $.build(Array of Arrays)
 			// Example:
 			// $.build([
 			//	['b'],['b'],['b']
 			// ])
+
+			// TODO: Fix this to not abuse childrel
 			var tags = $.mktag("div.temp");
 			for (var i in buildData) {
 				tags.append($.build(buildData[i]));
 			}
-			return tags.children();
+			var $children = tags.children();
+			tags.remove();
+			return $children;
 		} else {
 			var tagName = buildData[0];
 			var tagAttrs = {};
