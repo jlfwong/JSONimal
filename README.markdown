@@ -9,7 +9,7 @@ JSONimal turns this:
 		["h1", {text: "JSONimal!"}],
 		["table",{style: 'border: 1px solid black'},[
 			["thead",[
-				["tr",{style: 'background-color: red'},[
+				["tr",{style: 'text-transform: uppercase'},[
 					["th", {text: "one"}],
 					["th", {text: "two"}],
 					["th", {text: "three"}]
@@ -39,7 +39,7 @@ JSONimal turns this:
 
 into this:
 
-<h1>JSONimal!</h1><table style="border: 1px solid black;"><thead><tr style="background-color: red;"><th>one</th><th>two</th><th>three</th></tr></thead><tbody><tr><td><u>a</u></td><td>b</td><td>c</td></tr><tr><td><a href="http://www.google.ca">Google</a></td><td>b</td><td>c</td></tr><tr><td>a</td><td>b</td><td>c</td></tr></tbody></table>
+<h1>JSONimal!</h1><table style="border: 1px solid black;"><thead><tr style="text-transform: uppercase;"><th>one</th><th>two</th><th>three</th></tr></thead><tbody><tr><td><u>a</u></td><td>b</td><td>c</td></tr><tr><td><a href="http://www.google.ca">Google</a></td><td>b</td><td>c</td></tr><tr><td>a</td><td>b</td><td>c</td></tr></tbody></table>
 
 jQuery.mktag
 ============
