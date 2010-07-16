@@ -168,3 +168,15 @@ Example:
 			]]
 		]).appendTo("body");
 	});
+
+Testing
+-------
+
+This was tested using the [QUnit][qunit] framework. You can see the tests run in `test.html`.
+That file is also full of examples of the kind of stuff you can do with JSONimal - so check it out.
+
+This was developed in part during my time at [The Working Group][twg] - an awesome web development shop in Toronto. 
+
+
+[qunit]: http://docs.jquery.com/QUnit
+[twg]: http://www.twg.ca
